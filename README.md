@@ -187,7 +187,7 @@ SIMILARITY_THRESHOLD = 0.7 # Minimum similarity score
 
 # Models
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
-LLM_MODEL = "nvidia/llama-3.1-nemotron-70b-instruct"
+LLM_MODEL = "meta/llama-3.1-70B-instruct"
 ```
 
 ## Project Structure
