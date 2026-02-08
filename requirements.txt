@@ -1,0 +1,28 @@
+# Core AI/ML libraries
+langchain>=0.2.0
+langchain-community>=0.2.0
+langchain-text-splitters>=0.2.0
+langchain-chroma>=0.1.0
+chromadb>=0.5.0
+sentence-transformers>=2.5.0
+transformers>=4.40.0
+torch>=2.2.0
+
+# FastAPI and web server
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+python-multipart>=0.0.6
+
+# Document processing
+PyPDF2>=3.0.1
+python-docx>=1.1.0
+docx2txt>=0.8
+pypdf>=3.17.4
+
+# Data validation
+pydantic>=2.7.0
+pydantic-settings>=2.3.0
+
+# Utilities
+python-dotenv==1.0.0
+aiofiles==23.2.1

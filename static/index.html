@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Legal Document Navigator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-content">
+          <div class="logo">
+            <svg
+              class="logo-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+            >
+              <path
+                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+              ></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            <h1>Legal Document Navigator</h1>
+          </div>
+          <div class="status-indicator" id="statusIndicator">
+            <span class="status-dot"></span>
+            <span class="status-text">Ready</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Upload Section -->
+        <section class="upload-section card">
+          <h2>
+            <svg
+              class="section-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="17 8 12 3 7 8"></polyline>
+              <line x1="12" y1="3" x2="12" y2="15"></line>
+            </svg>
+            Upload Documents
+          </h2>
+          <p class="section-description">
+            Upload legal documents (PDF, DOCX, TXT) to build your searchable
+            knowledge base.
+          </p>
+
+          <div class="upload-area" id="uploadArea">
+            <input type="file" id="fileInput" accept=".pdf,.docx,.txt" hidden />
+            <div class="upload-content">
+              <svg
+                class="upload-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="17 8 12 3 7 8"></polyline>
+                <line x1="12" y1="3" x2="12" y2="15"></line>
+              </svg>
+              <p class="upload-text">
+                Drag & drop files here or
+                <span class="upload-link">browse</span>
+              </p>
+              <p class="upload-hint">Supports: PDF, DOCX, TXT (Max 50MB)</p>
+            </div>
+          </div>
+
+          <div id="uploadStatus" class="upload-status"></div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+          <div class="stat-card card">
+            <div class="stat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path
+                  d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                ></path>
+                <polyline points="13 2 13 9 20 9"></polyline>
+              </svg>
+            </div>
+            <div class="stat-content">
+              <div class="stat-value" id="documentCount">0</div>
+              <div class="stat-label">Document Chunks</div>
+            </div>
+          </div>
+
+          <div class="stat-card card">
+            <div class="stat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+              </svg>
+            </div>
+            <div class="stat-content">
+              <div class="stat-value" id="queryCount">0</div>
+              <div class="stat-label">Queries Processed</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Query Section -->
+        <section class="query-section card">
+          <h2>
+            <svg
+              class="section-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            Ask a Question
+          </h2>
+          <p class="section-description">
+            Search your legal documents using natural language queries.
+          </p>
+
+          <div class="query-examples">
+            <span class="example-label">Examples:</span>
+            <button
+              class="example-query"
+              data-query="Find all clauses about termination in the last 10 contracts"
+            >
+              Termination clauses
+            </button>
+            <button
+              class="example-query"
+              data-query="What are the liability limitations?"
+            >
+              Liability limitations
+            </button>
+            <button
+              class="example-query"
+              data-query="Summarize the payment terms"
+            >
+              Payment terms
+            </button>
+          </div>
+
+          <div class="query-input-container">
+            <textarea
+              id="queryInput"
+              class="query-input"
+              placeholder="e.g., Find all clauses about intellectual property rights..."
+              rows="3"
+            ></textarea>
+            <button id="queryButton" class="btn-primary">
+              <svg
+                class="btn-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+              </svg>
+              Search
+            </button>
+          </div>
+        </section>
+
+        <!-- Results Section -->
+        <section
+          id="resultsSection"
+          class="results-section card"
+          style="display: none"
+        >
+          <h2>
+            <svg
+              class="section-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+            >
+              <polyline points="9 11 12 14 22 4"></polyline>
+              <path
+                d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"
+              ></path>
+            </svg>
+            Results
+          </h2>
+
+          <div id="resultsContent" class="results-content">
+            <!-- Results will be inserted here -->
+          </div>
+        </section>
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <p>Legal Document Navigator • Powered by RAG Technology</p>
+        <div class="footer-links">
+          <a href="http://localhost:8000/docs" target="_blank">API Docs</a>
+          <span>•</span>
+          <a href="#" id="clearBtn">Clear All Documents</a>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none">
+      <div class="loading-spinner"></div>
+      <p class="loading-text">Processing...</p>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
